@@ -1338,6 +1338,8 @@ if [ -e "/proc/fb" ]; then
 	case $gpu in
 		*intel*) gpu=intel ;;
 	esac
+	
+	if [ -n "$gpu" ]; then
 
         if [ $gpu = intel ]; then
 		#Detect CPU
@@ -1358,6 +1360,7 @@ if [ -e "/proc/fb" ]; then
                                                                                              #8th Cannonlake
 	   	esac
         fi
+	fi
 fi
 }
 
