@@ -126,7 +126,7 @@ clear
 	fi
 
 if [ -z "`grep ^python_install_dir ${dir}/options.conf`" ]; then
-echo &&	echo -e "Error: options.conf 校验失败!" && echo "Info: 请检查服务器访问配置文件的过程!" && exit 1;
+echo &&	echo "Error: options.conf 校验失败!" && echo "info: ${1}/options.conf" && echo "Info: 请检查服务器访问配置文件的过程!" && exit 1;
 fi
 
 printf "
