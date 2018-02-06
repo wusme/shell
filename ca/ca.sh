@@ -41,7 +41,7 @@ read -p "(默认: y):" yn
 if [[ ${yn} == [Yy] ]]; then
 	if [ "${release}" = "centos" ]; then
 		#yum -y upgrade
-		yum -y install wget ntp vim net-tools ntpdate git zsh unzip
+		yum -y install wget ntp vim net-tools ntpdate git unzip
 		rm -f /etc/localtime;cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 		ntpdate 1.asia.pool.ntp.org
 		chkconfig iptables off && service iptables stop
@@ -49,7 +49,7 @@ if [[ ${yn} == [Yy] ]]; then
 	else
 		apt-get update -y
 		#apt-get upgrade -y
-		apt-get -y install wget curl vim net-tools git zsh unzip
+		apt-get -y install wget curl vim net-tools git unzip
 		rm -f /etc/localtime;cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 	fi
 fi
@@ -223,17 +223,17 @@ read -p "(默认: y):" yn
 if [[ ${yn} == [Yy] ]]; then
 	SHELL_ZZH=1
 	if [ "${release}" = "centos" ]; then
-		yum -y install wget git zsh
+		yum -y install wget git #zsh
 	else
 		apt-get update -y
-		apt-get -y install wget curl git zsh
+		apt-get -y install wget curl git #zsh
 	fi
 fi
 
 
 if [ ${SHELL_ZZH} -eq 1 ]; then
 	#chsh -s /bin/zsh
-	echo "Info: 安装oh-my-zsh"
+	#echo "Info: 安装oh-my-zsh"
   	#sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 	echo '' > /etc/motd
 	wget --no-check-certificate -O /usr/bin/screenfetch-dev https://raw.githubusercontent.com/wxlost/shell/master/ca/include/screenfetch-dev

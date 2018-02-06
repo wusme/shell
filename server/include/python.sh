@@ -47,6 +47,7 @@ EOF
   # Install zlib
     src_url=https://raw.githubusercontent.com/wxlost/shell/master/server/src/zlib-1.2.11.tar.gz && Download_src
     tar xzf zlib-1.2.11.tar.gz
+    rm -rf zlib-1.2.11.tar.gz
     pushd zlib-1.2.11
     ./configure
     make && make install
@@ -57,6 +58,7 @@ EOF
   if [ ! -e "${python_install_dir}/bin/python" -a ! -e "${python_install_dir}/bin/python3" ] ;then
     src_url=http://mirrors.linuxeye.com/oneinstack/src/Python-${python_version}.tgz && Download_src
     tar xzf Python-${python_version}.tgz
+    rm -rf Python-${python_version}.tgz
     pushd Python-${python_version}
     ./configure --prefix=${python_install_dir}
     make && make install
@@ -68,6 +70,7 @@ EOF
   if [ ! -e "${python_install_dir}/bin/easy_install" ] ;then
     src_url=http://mirrors.linuxeye.com/oneinstack/src/setuptools-${setuptools_version}.zip && Download_src
     unzip -q setuptools-${setuptools_version}.zip
+    rm -rf setuptools-${setuptools_version}.zip
     pushd setuptools-${setuptools_version}
     ${python_install_dir}/bin/python setup.py install
     popd
@@ -76,7 +79,8 @@ EOF
 
   if [ ! -e "${python_install_dir}/bin/pip" ] ;then
     src_url=http://mirrors.linuxeye.com/oneinstack/src/pip-${pip_version}.tar.gz && Download_src
-    tar xzf pip-${pip_version}.tar.gz					   
+    tar xzf pip-${pip_version}.tar.gz
+    rm -rf pip-${pip_version}.tar.gz
     pushd pip-${pip_version}
     ${python_install_dir}/bin/python setup.py install
     popd
