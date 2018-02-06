@@ -268,7 +268,11 @@ Uninstall_SS() {
 
 Print_User_SS() {
   pushd ${oneinstack_dir}
-  service supervisord restart
+if [ "${OS}" == 'CentOS' ]; then
+	service supervisord restart
+else
+	upervisorctl restart ssr
+fi
   clear
   echo ""
   echo "后端安装成功!"
