@@ -3,7 +3,7 @@ PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin
 export PATH
 #Version: 0.6.8
 
-sh_ver="0.0.4"
+sh_ver="0.0.6"
 sh_55R="https://raw.githubusercontent.com/wxlost/shell/master/server"
 dir=`pwd`
 
