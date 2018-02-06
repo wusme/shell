@@ -271,7 +271,7 @@ Print_User_SS() {
 if [ "${OS}" == 'CentOS' ]; then
 	service supervisord restart
 else
-	upervisorctl restart ssr
+	supervisorctl restart ssr
 fi
   clear
   echo ""
