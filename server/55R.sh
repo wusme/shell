@@ -126,7 +126,12 @@ clear
 	fi
 
 if [ -z "`grep ^python_install_dir ${dir}/options.conf`" ]; then
-echo &&	echo "Error: options.conf 校验失败!" && echo "info: ${1}/options.conf" && echo "Info: 请检查服务器访问配置文件的过程!" && exit 1;
+    echo && echo "[options.conf] 校验失败,尝试重新下载..." && echo
+    wget --no-check-certificate -O ${dir}/options.conf http://${options}/options.conf
+    echo && echo "[options.conf] 第二次校验开始..." && echo
+    if [ -z "`grep ^python_install_dir ${dir}/options.conf`" ]; then
+        echo &&	echo "Error: options.conf 第二次校验失败!" && echo "info: ${1}/options.conf" && echo "Info: 请检查服务器访问配置文件的过程!" && exit 1;
+    fi
 fi
 
 printf "
