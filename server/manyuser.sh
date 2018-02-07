@@ -285,7 +285,7 @@ else
 	curl --insecure ${weburl}/mod_mu/func/ping?key=${webtoken}
 fi
   echo ""
-  echo -e "出现 \033[42;37m pong \033[0m 即为成功!"
+  echo -e "出现 ${Info_font_prefix}[pong]${Font_suffix} 即为成功!"
 	echo ""
 	echo "----------hosts-----------"
 	grep ^${hostsip} /etc/hosts
@@ -302,6 +302,7 @@ install)
   Install_SSR-python
   config_supervisord
   Print_User_SS
+  echo -e "libsodium\t${crypto}" > /home/shadowsocks/versions.txt
   ;;
 upconfig)
   git_crypto_versions
@@ -309,7 +310,17 @@ upconfig)
   echo "${CBLUE}当前节点: ${NODE_ID}  当前加密库版本${crypto}${CEND}"
   id_install
   config_userapiconfig
-  download_files_libsodium
+#----------------
+  crypto_new_ver=$(grep ^libsodium /home/shadowsocks/versions.txt | awk '{print $2}')
+  if [ -e "/home/shadowsocks/versions.txt" ]; then
+      if [[ ${crypto_new_ver} != ${crypto} ]]; then
+        download_files_libsodium
+        echo -e "libsodium\t${crypto}" > /home/shadowsocks/versions.txt
+      fi
+  else
+    touch /home/shadowsocks/versions.txt
+  fi
+#----------------
   Print_User_SS
   ;;
 uninstall)
