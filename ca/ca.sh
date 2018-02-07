@@ -3,7 +3,7 @@ PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin
 export PATH
 #Version: 0.6.8
 
-govar="0.1.3"
+govar="0.1.4"
 
 #这里判断系统
 if [ -f /etc/redhat-release ]; then
@@ -74,8 +74,6 @@ if [[ ${yn} == [Yy] ]]; then
 		yum -y install wget ntp vim net-tools ntpdate git unzip
 		rm -f /etc/localtime;cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 		ntpdate 1.asia.pool.ntp.org
-		chkconfig iptables off && service iptables stop
-		systemctl disable firewalld && systemctl stop firewalld
 	else
 		apt-get update -y
 		#apt-get upgrade -y
