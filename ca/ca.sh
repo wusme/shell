@@ -35,26 +35,6 @@ get_ip(){
 
 # Install some dependencies
 clear
-echo -e "Info: 是否安装可能需要的依赖[Y/n]"
-read -p "(默认: y):" yn
-[[ -z "${yn}" ]] && yn="y"
-if [[ ${yn} == [Yy] ]]; then
-	if [ "${release}" = "centos" ]; then
-		#yum -y upgrade
-		yum -y install wget ntp vim net-tools ntpdate git unzip
-		rm -f /etc/localtime;cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
-		ntpdate 1.asia.pool.ntp.org
-		chkconfig iptables off && service iptables stop
-		systemctl disable firewalld && systemctl stop firewalld
-	else
-		apt-get update -y
-		#apt-get upgrade -y
-		apt-get -y install wget curl vim net-tools git unzip
-		rm -f /etc/localtime;cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
-	fi
-fi
-
-clear
 
 printf "
 #######################################################################
@@ -83,6 +63,25 @@ fi
 if [ -s /etc/selinux/config ] && grep 'SELINUX=enforcing' /etc/selinux/config; then
     sed -i 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/selinux/config
     setenforce 0
+fi
+
+echo -e "Info: 是否安装可能需要的依赖[Y/n]"
+read -p "(默认: y):" yn
+[[ -z "${yn}" ]] && yn="y"
+if [[ ${yn} == [Yy] ]]; then
+	if [ "${release}" = "centos" ]; then
+		#yum -y upgrade
+		yum -y install wget ntp vim net-tools ntpdate git unzip
+		rm -f /etc/localtime;cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+		ntpdate 1.asia.pool.ntp.org
+		chkconfig iptables off && service iptables stop
+		systemctl disable firewalld && systemctl stop firewalld
+	else
+		apt-get update -y
+		#apt-get upgrade -y
+		apt-get -y install wget curl vim net-tools git unzip
+		rm -f /etc/localtime;cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+	fi
 fi
 
 if [ ! -f "${HOME}/.ssh/authorized_keys" ]; then
