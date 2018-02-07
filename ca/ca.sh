@@ -3,7 +3,7 @@ PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin
 export PATH
 #Version: 0.6.8
 
-govar="0.1.1"
+govar="0.1.2"
 
 #这里判断系统
 if [ -f /etc/redhat-release ]; then
@@ -193,6 +193,12 @@ if [ -e "/etc/ssh/sshd_config" ]; then
   elif [ -n "`grep ^Port /etc/ssh/sshd_config`" ]; then
     sed -i "s@^Port.*@Port $SSH_PORT@" /etc/ssh/sshd_config
   fi
+
+	if [ "${release}" = 'centos' ]; then
+		service sshd restart
+	else
+		/etc/init.d/ssh restart   
+	fi
 #这里可以增加 防火墙 操作部分
 	echo -e "Info: 是否关闭防火墙并禁止自启动?菜鸟建议关闭，老手请自行修改防火墙策略[Y/n]"
 	read -p "(默认: y):" yn
