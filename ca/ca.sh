@@ -3,7 +3,7 @@ PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin
 export PATH
 #Version: 0.6.8
 
-govar="0.1.2"
+govar="0.1.3"
 
 #这里判断系统
 if [ -f /etc/redhat-release ]; then
@@ -246,7 +246,7 @@ if [ ${SHELL_ZZH} -eq 1 ]; then
 	wget --no-check-certificate -O /etc/profile.d/logo.sh https://raw.githubusercontent.com/wxlost/shell/master/ca/include/logo.sh
 	clear
 	#echo "Info: 安装oh-my-zsh完毕"
-	echo "Info: 安装shell命令美化完毕,请重新连接ssh即可查看效果"
+	echo "Info: 安装shell命令美化完毕,请重新连接ssh即可查看效果" && echo
 # Custom profile
 cat > /etc/profile.d/oneinstack.sh << EOF
 HISTSIZE=10000
@@ -267,11 +267,11 @@ fi
 
 #以下为我个人用的自定义
 
-echo "Info: Linux history 命令记录加执行时间戳以及记录到日志"
+echo "Info: Linux history 命令记录加执行时间戳以及记录到日志" && echo
 [ -z "$(grep ^'PROMPT_COMMAND=' /etc/bashrc)" ] && cat >> /etc/bashrc << EOF
 PROMPT_COMMAND='{ msg=\$(history 1 | { read x y; echo \$y; });logger "[euid=\$(whoami)]":\$(who am i):[\`pwd\`]"\$msg"; }'
 EOF
-echo "Info: 配置 limits.conf (65535)"
+echo "Info: 配置 limits.conf (65535)" && echo
 # /etc/security/limits.conf
 [ -e /etc/security/limits.d/*nproc.conf ] && rename nproc.conf nproc.conf_bk /etc/security/limits.d/*nproc.conf
 sed -i '/^# End of file/,$d' /etc/security/limits.conf
