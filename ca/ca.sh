@@ -198,7 +198,7 @@ if [ -e "/etc/ssh/sshd_config" ]; then
 	else
 		/etc/init.d/ssh restart   
 	fi
-	echo 'Info: 重新启动SSHd成功!'
+	echo 'Info: 重新启动SSHd成功!' && echo
 #这里可以增加 防火墙 操作部分
 	echo -e "Info: 是否关闭防火墙并禁止自启动?菜鸟建议关闭，老手请自行修改防火墙策略[Y/n]"
 	read -p "(默认: y):" yn
@@ -216,8 +216,7 @@ if [ -e "/etc/ssh/sshd_config" ]; then
 		else
 			/etc/init.d/ssh restart   
 		fi
-		echo 'Info: 重新启动SSHd成功!'
-		echo
+		echo 'Info: 重新启动SSHd成功!' && echo
 	fi
 fi
 
