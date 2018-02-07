@@ -1,6 +1,5 @@
 #!/bin/bash
 export PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
-clear
 
 # get pwd
 sed -i "s@^oneinstack_dir.*@oneinstack_dir=`pwd`@" ./options.conf
