@@ -240,7 +240,8 @@ if [ ${SHELL_ZZH} -eq 1 ]; then
 	chmod +x /usr/bin/screenfetch-dev
 	wget --no-check-certificate -O /etc/profile.d/logo.sh https://raw.githubusercontent.com/wxlost/shell/master/ca/include/logo.sh
 	clear
-echo "Info: 安装oh-my-zsh完毕"
+	#echo "Info: 安装oh-my-zsh完毕"
+	echo "Info: 安装shell命令美化完毕,请重新连接ssh即可查看效果"
 # Custom profile
 cat > /etc/profile.d/oneinstack.sh << EOF
 HISTSIZE=10000
