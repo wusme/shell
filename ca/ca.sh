@@ -3,7 +3,7 @@ PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin
 export PATH
 #Version: 0.6.8
 
-govar="0.1.0"
+govar="0.1.1"
 
 #这里判断系统
 if [ -f /etc/redhat-release ]; then
@@ -163,7 +163,6 @@ if [ ${DISABLE_PW_LOGIN} -eq 1 ]; then
 	echo 'Info: 关闭StrictModes设置完毕!'
 	#echo 'Restart SSHd manually!'
 fi
-fi
 
 if [ "${release}" = 'centos' ]; then
 	service sshd restart
@@ -171,6 +170,7 @@ else
 	/etc/init.d/ssh restart
 fi
 echo 'Info: 重新启动SSHd成功!'
+fi
 
 echo ' '
 get_ip
@@ -205,16 +205,16 @@ if [ -e "/etc/ssh/sshd_config" ]; then
 		else
 		echo  "Info: ${release} 防火墙默认没安装，故此没有判断（老手自理）"
 		fi
+		if [ "${release}" = 'centos' ]; then
+			service sshd restart
+		else
+			/etc/init.d/ssh restart   
+		fi
+		echo 'Info: 重新启动SSHd成功!'
+		echo
 	fi
 fi
 
-if [ "${release}" = 'centos' ]; then
-	service sshd restart
-else
-	/etc/init.d/ssh restart   
-fi
-echo 'Info: 重新启动SSHd成功!'
-echo
 echo 'Info: -----------------------'
 echo
 echo -e "Info: 是否安装shell命令美化?[Y/n]"
