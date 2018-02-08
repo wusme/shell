@@ -178,9 +178,14 @@ echo "https://vps${webid}.onepve.com:1433 {
 	fi
 	
 	echo && echo -e " 55r 配置文件：/home/shadowsocks/user-config.json \n [信息]redirect 配置完成！" && echo
-	service supervisord restart;
-	service caddy restart
+	
+if [ "${release}" == 'centOS' ]; then
+	service supervisord restart
+else
+	supervisorctl restart ssr
+fi
 }
+
 check_sys
 action=$1
 extension=$2
