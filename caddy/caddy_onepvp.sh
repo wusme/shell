@@ -147,11 +147,11 @@ done
 
     while true
     do
-  NODE_ID=$(grep ^NODE_ID /home/shadowsocks/userapiconfig.py)
-  echo "${CBLUE}当前节点: ${NODE_ID}${CEND}"
+  NODE_ID=$(grep ^NODE_ID /home/shadowsocks/userapiconfig.py | awk '{print $3}')
+  echo -e "${CBLUE}当前节点: ${Info_font_prefix}${NODE_ID}${Font_suffix}"
     echo -e "请输入上面的ID: [3-65535]:"
-    read -p "(默认ID: 3):" webid
-    [ -z "${webid}" ] && webid="3"
+    read -p "(默认ID: ${NODE_ID}):" webid
+    [ -z "${webid}" ] && webid=${CBLUE}
     expr ${webid} + 0 &>/dev/null
             echo
             echo "---------------------------"

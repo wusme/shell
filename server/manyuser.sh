@@ -33,8 +33,8 @@ git_crypto_versions(){
 id_install(){
     while true
     do
-    echo "${CBLUE}当前系统为: ${OS} ${CentOS_RHEL_version}${CEND}"
-    echo -e "请输入新节点ID: [3-65535]:"
+    echo -e "${CBLUE}当前系统为: ${OS} ${CentOS_RHEL_version}${CEND}"
+    echo "请输入新节点ID: [3-65535]:"
     read -p "(默认ID: 3):" webid
     [ -z "${webid}" ] && webid="3"
     expr ${webid} + 0 &>/dev/null
@@ -311,8 +311,8 @@ install)
   ;;
 upconfig)
   git_crypto_versions
-  NODE_ID=$(grep ^NODE_ID /home/shadowsocks/userapiconfig.py)
-  echo "${CBLUE}当前节点: ${NODE_ID}  当前加密库版本${crypto}${CEND}"
+  NODE_ID=$(grep ^NODE_ID /home/shadowsocks/userapiconfig.py | awk '{print $3}')
+  echo -e "${CBLUE}当前节点: ${NODE_ID}  当前加密库版本${crypto}${CEND}"
   id_install
   config_userapiconfig
 #----------------
