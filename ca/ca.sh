@@ -3,7 +3,7 @@ PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin
 export PATH
 #Version: 0.6.8
 
-govar="0.1.4"
+govar="0.1.5"
 
 #这里判断系统
 if [ -f /etc/redhat-release ]; then
@@ -77,7 +77,7 @@ if [[ ${yn} == [Yy] ]]; then
 	else
 		apt-get update -y
 		#apt-get upgrade -y
-		apt-get -y install wget curl vim net-tools git unzip
+		apt-get -y install ntpdate wget curl vim net-tools git unzip
 		rm -f /etc/localtime;cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 	fi
 fi

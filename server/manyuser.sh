@@ -64,9 +64,14 @@ Iptables_set() {
   echo "${CBLUE}当前ssh端口: ${ssh_port}${CEND}"
 # check iptables
 iptables_yn=n
-chkconfig iptables off && service iptables stop
-systemctl disable firewalld && systemctl stop firewalld
-
+		if [ "${OS}" = "CentOS" ]; then
+		chkconfig iptables off 2>/dev/null && service iptables stop 2>/dev/null
+		systemctl disable firewalld 2>/dev/null && systemctl stop firewalld 2>/dev/null
+		echo  "Info: ${OS} 防火墙关闭并禁止自启动（老手自理）"
+		else
+		echo  "Info: ${OS} 防火墙默认没安装，故此没有判断（老手自理）"
+		fi
+    
 # init
 startTime=`date +%s`
 . ../include/memory.sh
@@ -87,19 +92,19 @@ esac
 Def_parameter() {
   if [ "${OS}" == "CentOS" ]; then
     id_install
-    Iptables_set
-    pkgList="wget unzip openssl-devel gcc swig autoconf libtool libevent automake make curl curl-devel zlib-devel perl perl-devel cpio expat-devel gettext-devel git asciidoc xmlto pcre-devel mbedtls-devel udns-devel libev-devel libsodium"
+    pkgList="wget unzip ntpdate openssl-devel gcc swig autoconf libtool libevent automake make curl curl-devel zlib-devel perl perl-devel cpio expat-devel gettext-devel git asciidoc xmlto pcre-devel mbedtls-devel udns-devel libev-devel libsodium"
     for Package in ${pkgList}; do
       yum -y install ${Package}
     done
+    Iptables_set
   else
     id_install
-    Iptables_set
     apt-get -y update && apt-get upgrade -y
-    pkgList="curl wget unzip gcc swig automake autoconf make libtool perl cpio git libmbedtls-dev libudns-dev libev-dev"
+    pkgList="curl wget unzip ntpdate gcc swig automake autoconf make libtool perl cpio git libmbedtls-dev libudns-dev libev-dev"
     for Package in ${pkgList}; do
       apt-get -y install $Package
     done
+    Iptables_set
   fi
 }
 
