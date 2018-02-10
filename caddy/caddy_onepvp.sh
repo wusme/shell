@@ -151,7 +151,7 @@ done
   echo -e "${CBLUE}当前节点: ${Info_font_prefix}${NODE_ID}${Font_suffix}"
     echo -e "请输入上面的ID: [3-65535]:"
     read -p "(默认ID: ${NODE_ID}):" webid
-    [ -z "${webid}" ] && webid=${CBLUE}
+    [ -z "${webid}" ] && webid=${NODE_ID}
     expr ${webid} + 0 &>/dev/null
             echo
             echo "---------------------------"
