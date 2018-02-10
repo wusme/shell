@@ -80,6 +80,7 @@ if [[ ${yn} == [Yy] ]]; then
 		apt-get -y install ntpdate wget curl vim net-tools git unzip
 		rm -f /etc/localtime;cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 	fi
+	clear
 fi
 
 if [ ! -f "${HOME}/.ssh/authorized_keys" ]; then
