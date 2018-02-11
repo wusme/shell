@@ -71,13 +71,13 @@ read -p "(默认: y):" yn
 if [[ ${yn} == [Yy] ]]; then
 	if [ "${release}" = "centos" ]; then
 		#yum -y upgrade
-		yum -y install wget ntp vim net-tools ntpdate git unzip
+		yum -y install wget ntp vim net-tools ntpdate git unzip ca-certificates
 		rm -f /etc/localtime;cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 		ntpdate 1.asia.pool.ntp.org
 	else
 		apt-get update -y
 		#apt-get upgrade -y
-		apt-get -y install ntpdate wget curl vim net-tools git unzip
+		apt-get -y install ntpdate wget curl vim net-tools git unzip ca-certificates
 		rm -f /etc/localtime;cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 	fi
 	clear
