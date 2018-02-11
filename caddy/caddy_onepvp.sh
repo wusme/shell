@@ -42,11 +42,11 @@ Download_caddy(){
 	[[ -e "caddy_linux*.tar.gz" ]] && rm -rf "caddy_linux*.tar.gz"
 	[[ ! -z ${extension} ]] && extension_all="?plugins=${extension}"
 	if [[ ${bit} == "i386" ]]; then
-		wget --no-check-certificate -O "caddy_linux.tar.gz" "https://caddyserver.com/download/linux/386${extension_all}" && caddy_bit="caddy_linux_386"
+		wget -O "caddy_linux.tar.gz" "https://caddyserver.com/download/linux/386${extension_all}" && caddy_bit="caddy_linux_386"
 	elif [[ ${bit} == "i686" ]]; then
-		wget --no-check-certificate -O "caddy_linux.tar.gz" "https://caddyserver.com/download/linux/386${extension_all}" && caddy_bit="caddy_linux_386"
+		wget -O "caddy_linux.tar.gz" "https://caddyserver.com/download/linux/386${extension_all}" && caddy_bit="caddy_linux_386"
 	elif [[ ${bit} == "x86_64" ]]; then
-		wget --no-check-certificate -O "caddy_linux.tar.gz" "https://caddyserver.com/download/linux/amd64${extension_all}" && caddy_bit="caddy_linux_amd64"
+		wget -O "caddy_linux.tar.gz" "https://caddyserver.com/download/linux/amd64${extension_all}" && caddy_bit="caddy_linux_amd64"
 	else
 		echo -e "${Error_font_prefix}[错误]${Font_suffix} 不支持 ${bit} !" && exit 1
 	fi
@@ -62,14 +62,14 @@ Download_caddy(){
 }
 Service_caddy(){
 	if [[ ${release} = "centos" ]]; then
-		if ! wget --no-check-certificate https://raw.githubusercontent.com/wxlost/shell/master/caddy/other/caddy_centos -O /etc/init.d/caddy; then
+		if ! wget https://raw.githubusercontent.com/wxlost/shell/master/caddy/other/caddy_centos -O /etc/init.d/caddy; then
 			echo -e "${Error_font_prefix}[错误]${Font_suffix} Caddy服务 管理脚本下载失败 !" && exit 1
 		fi
 		chmod +x /etc/init.d/caddy
 		chkconfig --add caddy
 		chkconfig caddy on
 	else
-		if ! wget --no-check-certificate https://raw.githubusercontent.com/wxlost/shell/master/caddy/other/caddy_debian -O /etc/init.d/caddy; then
+		if ! wget https://raw.githubusercontent.com/wxlost/shell/master/caddy/other/caddy_debian -O /etc/init.d/caddy; then
 			echo -e "${Error_font_prefix}[错误]${Font_suffix} Caddy服务 管理脚本下载失败 !" && exit 1
 		fi
 		chmod +x /etc/init.d/caddy
@@ -173,7 +173,7 @@ echo "https://vps${webid}.onepve.com:1433 {
  proxy / https://${School}
 }" > /usr/local/caddy/Caddyfile
 
-	if ! wget --no-check-certificate https://raw.githubusercontent.com/wxlost/shell/master/caddy/other/user-config.json -O /home/shadowsocks/user-config.json; then
+	if ! wget https://raw.githubusercontent.com/wxlost/shell/master/caddy/other/user-config.json -O /home/shadowsocks/user-config.json; then
 		echo -e "${Error_font_prefix}[错误]${Font_suffix} Caddy服务 管理脚本下载失败 !" && exit 1
 	fi
 	
