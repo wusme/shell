@@ -9,12 +9,12 @@
 ### 请注意！！区分http和https
 ##### 参数2 固定为 -P 效果是关闭密码登陆增加安全性
 ```
-cd /root && wget O ca.sh https://raw.githubusercontent.com/wxlost/shell/master/ca/ca.sh && chmod +x ca.sh && bash ca.sh https://myhome.com/tools/wtf.pub
+cd /root && wget -O ca.sh https://raw.githubusercontent.com/wxlost/shell/master/ca/ca.sh && chmod +x ca.sh && bash ca.sh https://myhome.com/tools/wtf.pub
 ```
 
 ### 原始脚本-参数2 固定为 -P 效果是关闭密码登陆增加安全性
 ```
-cd /root && wget O ca.sh https://raw.githubusercontent.com/wxlost/shell/master/ca/ca.sh && chmod +x ca.sh && bash ca.sh 参数1 -p
+cd /root && wget -O ca.sh https://raw.githubusercontent.com/wxlost/shell/master/ca/ca.sh && chmod +x ca.sh && bash ca.sh 参数1 -p
 ```
 
 
