@@ -21,3 +21,8 @@ bash 55R.sh myhome.com/tools
 ```
 cd /root && wget -O 55R.sh https://raw.githubusercontent.com/wxlost/shell/master/server/55R.sh && chmod +x 55R.sh && bash 55R.sh 参数
 ```
+
+
+### 2. 在 wget 时去掉 --no-check-certificate 参数
+### 3. 如果遇到 "wget ... not trusted ..." 这种报错，不要使用 no-check-certificate 这个参数，这是治标不治本的方法，还后患无穷。正确的解决方法是：
+`apt-get install -y ca-certificates` 或 `yum install -y ca-certificates`
