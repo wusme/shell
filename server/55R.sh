@@ -87,7 +87,7 @@ clear
 		[[ -z "${yn}" ]] && yn="y"
 		if [[ ${yn} == [Yy] ]]; then
         Int_Shell
-		wget ${sh_55R}/55R.sh && chmod +x 55R.sh
+		wget -N ${sh_55R}/55R.sh && chmod +x 55R.sh
         clear
 		echo -e "脚本已更新为最新版本[ ${sh_new_ver} ] !"
 		else
