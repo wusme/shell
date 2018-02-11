@@ -224,6 +224,7 @@ get_ip
       	read -p "(默认: y):" yn
 	      [[ -z "${yn}" ]] && yn="y"
       	if [[ ${yn} == [Yy] ]]; then
+        read -p "警告：更换内核的时候有的系统会有提示一个窗口.请选择NO!不然....按任意键继续.......按Ctrl + C取消" var
         wget -N --no-check-certificate "https://raw.githubusercontent.com/chiakge/Linux-NetSpeed/master/tcp.sh" && chmod +x tcp.sh && ./tcp.sh
         else
         read -p "警告：本模式未经验证很容易炸内核!!! 按任意键继续.......按Ctrl + C取消" var
