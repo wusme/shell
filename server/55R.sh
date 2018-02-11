@@ -35,7 +35,7 @@ fi
 
 [[ ${release} != "debian" ]] && [[ ${release} != "ubuntu" ]] && [[ ${release} != "centos" ]] && echo -e "${Error} 本脚本不支持当前系统 ${release} !" && exit 1
 
-conf_Shell(){
+Int_Shell(){
     wget -O ${dir}/options.conf http://${options}/options.conf
     wget -O ${dir}/manyuser.sh ${sh_55R}/manyuser.sh  && chmod +x manyuser.sh
     wget -O ${dir}/install.sh ${sh_55R}/install.sh  && chmod +x install.sh
@@ -62,33 +62,6 @@ conf_Shell(){
 "
 }
 
-Int_Shell(){
-    wget -N -O ${dir}/options.conf http://${options}/options.conf
-    wget -N -O ${dir}/manyuser.sh ${sh_55R}/manyuser.sh  && chmod +x manyuser.sh
-    wget -N -O ${dir}/install.sh ${sh_55R}/install.sh  && chmod +x install.sh
-    if [ ! -d ${dir}/include ]; then
-    mkdir include
-    fi
-    if [ ! -d ${dir}/src ]; then
-    mkdir src
-    fi
-    wget -N -O ${dir}/include/color.sh ${sh_55R}/include/color.sh
-    wget -N -O ${dir}/include/check_os.sh ${sh_55R}/include/check_os.sh
-    wget -N -O ${dir}/include/get_char.sh ${sh_55R}/include/get_char.sh
-    wget -N -O ${dir}/include/memory.sh ${sh_55R}/include/memory.sh
-    wget -N -O ${dir}/include/download.sh ${sh_55R}/include/download.sh
-    wget -N -O ${dir}/include/python.sh ${sh_55R}/include/python.sh
-    wget -N -O ${dir}/include/init_CentOS.sh ${sh_55R}/include/init_CentOS.sh
-    wget -N -O ${dir}/include/init_Debian.sh ${sh_55R}/include/init_Debian.sh
-    wget -N -O ${dir}/include/init_Ubuntu.sh ${sh_55R}/include/init_Ubuntu.sh
-    clear
-    printf "
-#######################################################################
-#     必备附加脚本下载完毕
-#######################################################################
-"
-}
-
 #check count of parameters. 
 if [ $# -eq 0 -o $# -gt 2 ]; then
 	echo " - Usage: $0 {options.conf的地址}"; exit 1;
@@ -101,20 +74,20 @@ Int_Shell
 fi
 
 if [ $# -eq 2 -a "$2" = '-p' ]; then
-	conf_Shell
+	Int_Shell
 fi
 
 clear
 	echo -e "当前版本为 [ ${sh_ver} ]，开始检测最新版本..."
-	sh_new_ver=$(wget -N -qO- "${sh_55R}/55R.sh"|grep 'sh_ver="'|awk -F "=" '{print $NF}'|sed 's/\"//g'|head -1)
+	sh_new_ver=$(wget -qO- "${sh_55R}/55R.sh"|grep 'sh_ver="'|awk -F "=" '{print $NF}'|sed 's/\"//g'|head -1)
 	[[ -z ${sh_new_ver} ]] && echo -e "${Error} 检测最新版本失败 !" && Menu
 	if [[ ${sh_new_ver} != ${sh_ver} ]]; then
 		echo -e "发现新版本[ ${sh_new_ver} ]，是否更新？[Y/n]"
 		read -p "(默认: y):" yn
 		[[ -z "${yn}" ]] && yn="y"
 		if [[ ${yn} == [Yy] ]]; then
-        conf_Shell
-		wget -N ${sh_55R}/55R.sh && chmod +x 55R.sh
+        Int_Shell
+		wget ${sh_55R}/55R.sh && chmod +x 55R.sh
         clear
 		echo -e "脚本已更新为最新版本[ ${sh_new_ver} ] !"
 		else
