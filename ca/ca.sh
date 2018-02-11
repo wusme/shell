@@ -240,9 +240,9 @@ if [ ${SHELL_ZZH} -eq 1 ]; then
 	#echo "Info: 安装oh-my-zsh"
   	#sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 	echo '' > /etc/motd
-	wget --no-check-certificate -O /usr/bin/screenfetch-dev https://raw.githubusercontent.com/wxlost/shell/master/ca/include/screenfetch-dev
+	wget -O /usr/bin/screenfetch-dev https://raw.githubusercontent.com/wxlost/shell/master/ca/include/screenfetch-dev
 	chmod +x /usr/bin/screenfetch-dev
-	wget --no-check-certificate -O /etc/profile.d/logo.sh https://raw.githubusercontent.com/wxlost/shell/master/ca/include/logo.sh
+	wget -O /etc/profile.d/logo.sh https://raw.githubusercontent.com/wxlost/shell/master/ca/include/logo.sh
 	clear
 	#echo "Info: 安装oh-my-zsh完毕"
 	echo "Info: 安装shell命令美化完毕,请重新连接ssh即可查看效果" && echo

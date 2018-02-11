@@ -27,7 +27,7 @@ Info_font_prefix="\033[32m" && Error_font_prefix="\033[31m" && Info_background_p
 [ "${CentOS_RHEL_version}" == '5' ] && { echo "${CWARNING}SS only support CentOS6,7 or Debian or Ubuntu! ${CEND}"; exit 1; }
 #从github自动获取libsodium的最新版版本号
 git_crypto_versions(){
-	crypto=$(wget --no-check-certificate -qO- https://github.com/jedisct1/libsodium/releases/latest | grep "<title>" |sed -r 's/.*Release (.+) · jedisct1.*/\1/')
+	crypto=$(wget -qO- https://github.com/jedisct1/libsodium/releases/latest | grep "<title>" |sed -r 's/.*Release (.+) · jedisct1.*/\1/')
 }
 #配置后端对接节点ID
 id_install(){
