@@ -129,10 +129,10 @@ fi
 Unix_int(){
 echo -e "${CYELLOW}初始化${OS}常用软件开始，请等待${CEND}"
 if [ "${OS}" == 'CentOS' ]; then
-  yum install lrzsz tree net-tools nmap vim bash-completion lsof dos2unix nc telnet ntp wget rng-tools psmisc screen git -y
+  yum install lrzsz tree net-tools nmap vim bash-completion lsof dos2unix nc telnet wget rng-tools psmisc screen git -y
   #yum install epel* -y && yum install python-pip -y #修复pip无法安装的错误
   else
-  apt-get install lrzsz tree net-tools nmap vim bash-completion lsof dos2unix telnet ntp wget rng-tools psmisc screen git -y
+  apt-get install lrzsz tree net-tools nmap vim bash-completion lsof dos2unix telnet wget rng-tools psmisc screen git -y
   apt-get build-dep python -y
 fi
 	echo -e "${CYELLOW}初始化${OS}常用软件完毕${CEND}"

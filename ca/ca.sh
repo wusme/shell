@@ -3,7 +3,7 @@ PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin
 export PATH
 #Version: 0.6.8
 
-govar="0.1.6"
+govar="0.1.7"
 
 #这里判断系统
 if [ -f /etc/redhat-release ]; then
@@ -38,7 +38,7 @@ clear
 
 printf "
 #######################################################################
-#     欢迎使用 SSH密钥安装程序 var ${govar}
+#     欢迎使用 SSH密钥安装程序 ${govar}
 #     系统支持 CentOS/RadHat 5+ Debian 6+ and Ubuntu 12+
 #######################################################################
 "
@@ -72,14 +72,14 @@ if [[ ${yn} == [Yy] ]]; then
 	if [ "${release}" = "centos" ]; then
 		#yum -y upgrade
 		yum -y install wget ntp vim net-tools ntpdate git unzip ca-certificates
-		rm -f /etc/localtime;cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
-		ntpdate 1.asia.pool.ntp.org
+		yum -y remove ntp
 	else
 		apt-get update -y
 		#apt-get upgrade -y
 		apt-get -y install ntpdate wget curl vim net-tools git unzip ca-certificates
-		rm -f /etc/localtime;cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 	fi
+	rm -rf /etc/localtime
+	ln -s /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 	clear
 fi
 
