@@ -56,35 +56,35 @@ EOF
 
   # Install Python
   if [ ! -e "${python_install_dir}/bin/python" -a ! -e "${python_install_dir}/bin/python3" ] ;then
-    src_url=http://mirrors.linuxeye.com/oneinstack/src/Python-${python_version}.tgz && Download_src
-    tar xzf Python-${python_version}.tgz
-    rm -rf Python-${python_version}.tgz
-    pushd Python-${python_version}
+    src_url=http://mirrors.linuxeye.com/oneinstack/src/Python-2.7.14.tgz && Download_src
+    tar xzf Python-2.7.14.tgz
+    rm -rf Python-2.7.14.tgz
+    pushd Python-2.7.14
     ./configure --prefix=${python_install_dir}
     make && make install
     [ ! -e "${python_install_dir}/bin/python" -a -e "${python_install_dir}/bin/python3" ] && ln -s ${python_install_dir}/bin/python{3,}
     popd
-    rm -rf Python-${python_version}
+    rm -rf Python-2.7.14
   fi
 
   if [ ! -e "${python_install_dir}/bin/easy_install" ] ;then
-    src_url=http://mirrors.linuxeye.com/oneinstack/src/setuptools-${setuptools_version}.zip && Download_src
-    unzip -q setuptools-${setuptools_version}.zip
-    rm -rf setuptools-${setuptools_version}.zip
-    pushd setuptools-${setuptools_version}
+    src_url=http://mirrors.linuxeye.com/oneinstack/src/setuptools-32.0.0.zip && Download_src
+    unzip -q setuptools-32.0.0.zip
+    rm -rf setuptools-32.0.0.zip
+    pushd setuptools-32.0.0
     ${python_install_dir}/bin/python setup.py install
     popd
-    rm -rf setuptools-${setuptools_version}
+    rm -rf setuptools-32.0.0
   fi
 
   if [ ! -e "${python_install_dir}/bin/pip" ] ;then
-    src_url=http://mirrors.linuxeye.com/oneinstack/src/pip-${pip_version}.tar.gz && Download_src
-    tar xzf pip-${pip_version}.tar.gz
-    rm -rf pip-${pip_version}.tar.gz
-    pushd pip-${pip_version}
+    src_url=http://mirrors.linuxeye.com/oneinstack/src/pip-9.0.1.tar.gz && Download_src
+    tar xzf pip-9.0.1.tar.gz
+    rm -rf pip-9.0.1.tar.gz
+    pushd pip-9.0.1
     ${python_install_dir}/bin/python setup.py install
     popd
-    rm -rf pip-${pip_version}
+    rm -rf pip-9.0.1
     rm -rf /usr/bin/pip
     ln -s /usr/local/python/bin/pip /usr/bin/pip												
   fi

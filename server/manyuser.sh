@@ -315,13 +315,13 @@ upconfig)
   echo -e "${CBLUE}当前节点: ${NODE_ID}  当前加密库版本${crypto}${CEND}"
   id_install
   config_userapiconfig
-#----------------
-  crypto_new_ver=$(grep ^libsodium /home/shadowsocks/versions.txt | awk '{print $2}')
+#----------------  
   if [ -e "/home/shadowsocks/versions.txt" ]; then
-      if [[ ${crypto_new_ver} != ${crypto} ]]; then
-        download_files_libsodium
-        echo -e "libsodium\t${crypto}" > /home/shadowsocks/versions.txt
-      fi
+  crypto_new_ver=$(grep ^libsodium /home/shadowsocks/versions.txt | awk '{print $2}')
+    if [[ ${crypto_new_ver} != ${crypto} ]]; then
+      download_files_libsodium
+      echo -e "libsodium\t${crypto}" > /home/shadowsocks/versions.txt
+    fi
   else
     touch /home/shadowsocks/versions.txt
   fi
