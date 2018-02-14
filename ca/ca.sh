@@ -3,7 +3,7 @@ PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin
 export PATH
 #Version: 0.6.8
 
-govar="0.1.7"
+govar="0.1.8"
 
 #这里判断系统
 if [ -f /etc/redhat-release ]; then
