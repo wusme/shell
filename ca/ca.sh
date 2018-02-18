@@ -71,6 +71,7 @@ read -p "(默认: y):" yn
 if [[ ${yn} == [Yy] ]]; then
 	if [ "${release}" = "centos" ]; then
 		#yum -y upgrade
+		yum install epel* -y
 		yum -y install htop wget vim net-tools git unzip ca-certificates
 		#yum -y remove ntp
 	else
