@@ -3,7 +3,7 @@ PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin
 export PATH
 #Version: 0.6.8
 
-govar="0.1.8"
+govar="0.2.0"
 
 #这里判断系统
 if [ -f /etc/redhat-release ]; then
@@ -72,12 +72,18 @@ if [[ ${yn} == [Yy] ]]; then
 	if [ "${release}" = "centos" ]; then
 		#yum -y upgrade
 		yum install epel* -y
-		yum -y install htop wget vim net-tools git unzip ca-certificates
 		#yum -y remove ntp
+    	pkgList="htop wget vim net-tools git unzip ca-certificates"
+    	for Package in ${pkgList}; do
+    		yum -y install ${Package}
+    	done
 	else
 		apt-get update -y
 		#apt-get upgrade -y
-		apt-get -y install htop wget curl vim net-tools git unzip ca-certificates
+    	pkgList="htop wget curl vim net-tools git unzip ca-certificates"
+    	for Package in ${pkgList}; do
+      		apt-get -y install $Package
+    	done
 	fi
 	rm -rf /etc/localtime
 	ln -s /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
