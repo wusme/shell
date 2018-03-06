@@ -132,7 +132,7 @@ Install_SSR-python() {
   rm -rf /home/shadowsocks
   #git clone -b manyuser https://github.com/esdeathlove/shadowsocks.git
   src_url=https://onepvp.com/c-download/shadowsocks.zip && Download_src
-  unzip
+  unzip shadowsocks.zip
   rm -rf /home/shadowsocks.zip
   popd
   if [ ! -f /home/shadowsocks/server.py ]; then
