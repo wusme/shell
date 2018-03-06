@@ -130,7 +130,10 @@ download_files_libsodium(){
 Install_SSR-python() {
   pushd /home
   rm -rf /home/shadowsocks
-  git clone -b manyuser https://github.com/esdeathlove/shadowsocks.git
+  #git clone -b manyuser https://github.com/esdeathlove/shadowsocks.git
+  src_url=https://onepvp.com/c-download/shadowsocks.zip && Download_src
+  unzip
+  rm -rf /home/shadowsocks.zip
   popd
   if [ ! -f /home/shadowsocks/server.py ]; then
     echo "${CWARNING}魔改后端下载失败!${CEND}"
