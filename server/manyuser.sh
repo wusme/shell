@@ -92,7 +92,7 @@ esac
 Def_parameter() {
   if [ "${OS}" == "CentOS" ]; then
     id_install
-    pkgList="wget unzip ntpdate openssl-devel gcc swig autoconf libtool libevent automake make curl curl-devel zlib-devel perl perl-devel cpio expat-devel gettext-devel git asciidoc xmlto pcre-devel mbedtls-devel udns-devel libev-devel libsodium"
+    pkgList="wget unzip nss curl libcurl openssl-devel gcc swig autoconf libtool libevent automake make curl curl-devel zlib-devel perl perl-devel cpio expat-devel gettext-devel git asciidoc xmlto pcre-devel mbedtls-devel udns-devel libev-devel libsodium"
     for Package in ${pkgList}; do
       yum -y install ${Package}
     done
@@ -100,7 +100,7 @@ Def_parameter() {
   else
     id_install
     apt-get -y update && apt-get upgrade -y
-    pkgList="curl wget unzip ntpdate gcc swig automake autoconf make libtool perl cpio git libmbedtls-dev libudns-dev libev-dev"
+    pkgList="curl wget unzip gcc swig automake autoconf make libtool perl cpio git libmbedtls-dev libudns-dev libev-dev"
     for Package in ${pkgList}; do
       apt-get -y install $Package
     done
