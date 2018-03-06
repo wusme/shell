@@ -3,7 +3,7 @@ PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin
 export PATH
 #Version: 0.6.8
 
-govar="0.2.0"
+govar="0.2.1"
 
 #这里判断系统
 if [ -f /etc/redhat-release ]; then
@@ -202,7 +202,7 @@ if [ -e "/etc/ssh/sshd_config" ]; then
 	if [ "${release}" = 'centos' ]; then
 		service sshd restart
 	else
-		/etc/init.d/ssh restart   
+		/etc/init.d/ssh restart
 	fi
 	echo 'Info: 重新启动SSHd成功!' && echo
 #这里可以增加 防火墙 操作部分
@@ -220,11 +220,32 @@ if [ -e "/etc/ssh/sshd_config" ]; then
 		if [ "${release}" = 'centos' ]; then
 			service sshd restart
 		else
-			/etc/init.d/ssh restart   
+			/etc/init.d/ssh restart
 		fi
 		echo 'Info: 重新启动SSHd成功!' && echo
 	fi
 fi
+
+echo -e "Info: 是否[取消显示]每次登陆提示的历史IP(lastlogin)？[Y/n]"
+read -p "(默认: y):" yn
+[[ -z "${yn}" ]] && yn="y"
+if [[ ${yn} == [Nn] ]]; then
+	echo && echo "Info: 跳过本设置..." && echo
+else
+	if [ -z "`grep ^PrintLastLog /etc/ssh/sshd_config`" ]; then
+	sed -i "s@^#PrintLastLog.*@&\nPrintLastLog no@" /etc/ssh/sshd_config
+	else
+	sed -i "s@^PrintLastLog.*@PrintLastLog no@" /etc/ssh/sshd_config
+	fi
+if [ "${release}" = 'centos' ]; then
+	service sshd restart
+else
+	/etc/init.d/ssh restart
+fi
+	echo 'Info: 不显示每次登陆显示的IP 设置完毕!'
+	echo 'Info: 此功能可能需要重启系统才能生效!'
+fi
+
 
 echo 'Info: -----------------------'
 echo
