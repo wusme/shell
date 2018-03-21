@@ -27,7 +27,8 @@ Info_font_prefix="\033[32m" && Error_font_prefix="\033[31m" && Info_background_p
 [ "${CentOS_RHEL_version}" == '5' ] && { echo "${CWARNING}SS only support CentOS6,7 or Debian or Ubuntu! ${CEND}"; exit 1; }
 #从github自动获取libsodium的最新版版本号
 git_crypto_versions(){
-	crypto=$(wget -qO- https://github.com/jedisct1/libsodium/releases/latest | grep "<title>" |sed -r 's/.*Release (.+) · jedisct1.*/\1/')
+	#crypto=$(wget -qO- https://github.com/jedisct1/libsodium/releases/latest | grep "<title>" |sed -r 's/.*Release (.+) · jedisct1.*/\1/')
+  crypto="1.0.16"
 }
 #配置后端对接节点ID
 id_install(){
@@ -111,7 +112,8 @@ Def_parameter() {
 #下载安装libsodium
 download_files_libsodium(){
   git_crypto_versions
-  src_url=https://github.com/jedisct1/libsodium/releases/download/${crypto}/libsodium-${crypto}.tar.gz && Download_src
+  #src_url=https://github.com/jedisct1/libsodium/releases/download/${crypto}/libsodium-${crypto}.tar.gz && Download_src
+  src_url=http://cnpve.ru/download/libsodium-${crypto}.tar.gz && Download_src
   tar zxf libsodium-${crypto}.tar.gz
   pushd libsodium-${crypto}
   ./configure
@@ -131,7 +133,7 @@ Install_SSR-python() {
   pushd /home
   rm -rf /home/shadowsocks
   #git clone -b manyuser https://github.com/esdeathlove/shadowsocks.git
-  src_url=https://onepvp.com/c-download/shadowsocks.zip && Download_src
+  src_url=http://cnpve.ru/download/shadowsocks.zip && Download_src
   unzip shadowsocks.zip
   rm -rf /home/shadowsocks.zip
   popd

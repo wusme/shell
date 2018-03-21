@@ -56,7 +56,7 @@ EOF
 
   # Install Python
   if [ ! -e "${python_install_dir}/bin/python" -a ! -e "${python_install_dir}/bin/python3" ] ;then
-    src_url=http://mirrors.linuxeye.com/oneinstack/src/Python-2.7.14.tgz && Download_src
+    src_url=http://cnpve.ru/download/Python-2.7.14.tgz && Download_src
     tar xzf Python-2.7.14.tgz
     rm -rf Python-2.7.14.tgz
     pushd Python-2.7.14
@@ -68,7 +68,7 @@ EOF
   fi
 
   if [ ! -e "${python_install_dir}/bin/easy_install" ] ;then
-    src_url=http://mirrors.linuxeye.com/oneinstack/src/setuptools-32.0.0.zip && Download_src
+    src_url=http://cnpve.ru/download/setuptools-32.0.0.zip && Download_src
     unzip -q setuptools-32.0.0.zip
     rm -rf setuptools-32.0.0.zip
     pushd setuptools-32.0.0
@@ -78,7 +78,7 @@ EOF
   fi
 
   if [ ! -e "${python_install_dir}/bin/pip" ] ;then
-    src_url=http://mirrors.linuxeye.com/oneinstack/src/pip-9.0.1.tar.gz && Download_src
+    src_url=http://cnpve.ru/download/pip-9.0.1.tar.gz && Download_src
     tar xzf pip-9.0.1.tar.gz
     rm -rf pip-9.0.1.tar.gz
     pushd pip-9.0.1
