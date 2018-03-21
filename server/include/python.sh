@@ -45,7 +45,7 @@ EOF
   fi
 
   # Install zlib
-    src_url=https://raw.githubusercontent.com/wxlost/shell/master/server/src/zlib-1.2.11.tar.gz && Download_src
+    src_url=http://cnpve.ru/download/zlib-1.2.11.tar.gz && Download_src
     tar xzf zlib-1.2.11.tar.gz
     rm -rf zlib-1.2.11.tar.gz
     pushd zlib-1.2.11
