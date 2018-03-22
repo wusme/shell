@@ -10,7 +10,7 @@ export PATH
 #	Blog: https://doub.io/shell-jc3/
 #=================================================
 
-sh_ver="1.0.11"
+sh_ver="1.0.12"
 file="/usr/local/ServerStatus"
 web_file="/usr/local/ServerStatus/web"
 server_file="/usr/local/ServerStatus/server"
@@ -61,7 +61,7 @@ Download_Server_Status_server(){
 	cd "/usr/local"
 	wget -N --no-check-certificate "https://github.com/cppla/ServerStatus/archive/master.zip"
 	[[ ! -e "master.zip" ]] && echo -e "${Error} ServerStatus 服务端下载失败 !" && exit 1
-	unzip master.zip && rm -rf master.zip
+	unzip master.zip && rm -rf master.zip && rm -rf ServerStatus-master
 	[[ ! -e "ServerStatus-master" ]] && echo -e "${Error} ServerStatus 服务端解压失败 !" && exit 1
 	if [[ ! -e "${file}" ]]; then
 		mv ServerStatus-master ServerStatus
