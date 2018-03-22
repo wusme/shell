@@ -804,7 +804,7 @@ echo && echo -e "  ServerStatus 一键安装管理脚本 ${Red_font_prefix}[v${s
  ${Green_font_prefix}7.${Font_color_suffix} 查看 客户端信息
  ${Green_font_prefix}8.${Font_color_suffix} 查看 客户端日志
 ————————————
- ${Green_font_prefix}9.${Font_color_suffix} 切换为 服务端菜单" && echo  "-- 菜单↑ --" && echo
+ ${Green_font_prefix}9.${Font_color_suffix} 切换为 服务端菜单" && echo && echo  "-- 菜单↑ --" && echo
 
 if [[ -e ${client_file} ]]; then
 	check_pid_client
@@ -871,7 +871,7 @@ echo && echo -e "  ServerStatus 一键安装管理脚本 ${Red_font_prefix}[v${s
  ${Green_font_prefix}7.${Font_color_suffix} 查看 服务端信息
  ${Green_font_prefix}8.${Font_color_suffix} 查看 服务端日志
 ————————————
- ${Green_font_prefix}9.${Font_color_suffix} 切换为 客户端菜单" && echo  "-- 菜单↑ --" && echo
+ ${Green_font_prefix}9.${Font_color_suffix} 切换为 客户端菜单" && echo && echo  "-- 菜单↑ --" && echo
 if [[ -e ${server_file} ]]; then
 	check_pid_server
 	if [[ ! -z "${PID}" ]]; then
