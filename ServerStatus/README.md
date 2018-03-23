@@ -18,7 +18,7 @@
 
 执行下面的代码下载并运行脚本。
 ``` bash
-wget -N --no-check-certificate https://raw.githubusercontent.com/wxlost/shell/master/ServerStatus/status.sh && chmod +x status.sh
+wget -O status.sh https://raw.githubusercontent.com/wxlost/shell/master/ServerStatus/status.sh && chmod +x status.sh
 ```
 下载脚本后，根据需要安装客户端或者服务端：
 ``` bash
