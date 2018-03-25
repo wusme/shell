@@ -89,9 +89,10 @@ EOF
     ln -s /usr/local/python/bin/pip /usr/bin/pip												
   fi
 
-  if [ ! -e "/root/.pip/pip.conf" ] ;then
-      [ ! -d "/root/.pip" ] && mkdir /root/.pip
-      echo -e "[global]\nindex-url = https://pypi.tuna.tsinghua.edu.cn/simple" > /root/.pip/pip.conf
-  fi
+  #注释,有的机器报错.http://mirrors.linuxeye.com/oneinstack/src
+  #if [ ! -e "/root/.pip/pip.conf" ] ;then
+  #    [ ! -d "/root/.pip" ] && mkdir /root/.pip
+  #    echo -e "[global]\nindex-url = https://pypi.tuna.tsinghua.edu.cn/simple" > /root/.pip/pip.conf
+  #fi
   popd
 }
