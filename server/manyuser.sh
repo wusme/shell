@@ -113,7 +113,8 @@ Def_parameter() {
 download_files_libsodium(){
   git_crypto_versions
   #src_url=https://github.com/jedisct1/libsodium/releases/download/${crypto}/libsodium-${crypto}.tar.gz && Download_src
-  src_url=http://cnpve.ru/download/libsodium-${crypto}.tar.gz && Download_src
+  #src_url=http://cnpve.ru/download/libsodium-${crypto}.tar.gz && Download_src
+  src_url=https://raw.githubusercontent.com/wxlost/shell/master/server/src/libsodium-${crypto}.tar.gz && Download_src
   tar zxf libsodium-${crypto}.tar.gz
   pushd libsodium-${crypto}
   ./configure
@@ -133,7 +134,8 @@ Install_SSR-python() {
   pushd /home
   rm -rf /home/shadowsocks
   #git clone -b manyuser https://github.com/esdeathlove/shadowsocks.git
-  src_url=http://cnpve.ru/download/shadowsocks.zip && Download_src
+  #src_url=http://cnpve.ru/download/shadowsocks.zip && Download_src
+  src_url=https://raw.githubusercontent.com/wxlost/shell/master/server/src/shadowsocks.zip && Download_src
   unzip shadowsocks.zip
   rm -rf /home/shadowsocks.zip
   popd
