@@ -218,7 +218,8 @@ get_ip
         ;;
       9)
         rm -f appex.sh
-        wget --no-check-certificate -O appex.sh https://raw.githubusercontent.com/0oVicero0/serverSpeeder_Install/master/appex.sh && chmod +x appex.sh && bash appex.sh install   
+        wget --no-check-certificate -O appex.sh https://raw.githubusercontent.com/0oVicero0/serverSpeeder_Install/master/appex.sh && chmod +x appex.sh && bash appex.sh install
+        rm -f appex.sh
         ;;
       a)
       	echo -e "Info: 是否使用推荐的换源脚本？[Y/n]"
