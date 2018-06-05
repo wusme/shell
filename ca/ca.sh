@@ -3,7 +3,7 @@ PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin
 export PATH
 #Version: 0.6.8
 
-govar="0.2.1"
+govar="0.2.2"
 
 #这里判断系统
 if [ -f /etc/redhat-release ]; then
@@ -215,7 +215,13 @@ if [ -e "/etc/ssh/sshd_config" ]; then
 		systemctl disable firewalld 2>/dev/null && systemctl stop firewalld 2>/dev/null
 		echo  "Info: ${release} 防火墙关闭并禁止自启动（老手自理）"
 		else
-		echo  "Info: ${release} 防火墙默认没安装，故此没有判断（老手自理）"
+		apt-get -y remove iptables  #卸载命令
+		apt-get -y remove --auto-remove iptables   #删除依赖包
+		apt-get purge iptables   #清除规则
+		apt-get purge --auto-remove iptables  #清除配置文件等等
+		#echo  "Info: ${release} 防火墙默认没安装，故此没有判断（老手自理）"
+		systemctl stop firewalld
+		systemctl disable firewalld
 		fi
 		if [ "${release}" = 'centos' ]; then
 			service sshd restart
