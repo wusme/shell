@@ -3,7 +3,7 @@ PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin
 export PATH
 #Version: 0.6.8
 
-govar="0.2.2"
+govar="0.2.3"
 
 #这里判断系统
 if [ -f /etc/redhat-release ]; then
@@ -217,8 +217,8 @@ if [ -e "/etc/ssh/sshd_config" ]; then
 		else
 		apt-get -y remove iptables  #卸载命令
 		apt-get -y remove --auto-remove iptables   #删除依赖包
-		apt-get purge iptables   #清除规则
-		apt-get purge --auto-remove iptables  #清除配置文件等等
+		apt-get -y purge iptables   #清除规则
+		apt-get -y purge --auto-remove iptables  #清除配置文件等等
 		#echo  "Info: ${release} 防火墙默认没安装，故此没有判断（老手自理）"
 		systemctl stop firewalld
 		systemctl disable firewalld
