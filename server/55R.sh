@@ -3,7 +3,7 @@ PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin
 export PATH
 #Version: 0.6.8
 
-sh_ver="0.1.8"
+sh_ver="0.2.0"
 sh_55R="https://raw.githubusercontent.com/wxlost/shell/master/server"
 dir=`pwd`
 
@@ -95,7 +95,7 @@ clear
 		fi
 	else
 		echo -e "当前已是最新版本[ ${sh_new_ver} ] !"
-		sleep 5s
+		#sleep 5s
 	fi
 
 if [ -z "`grep ^python_install_dir ${dir}/options.conf`" ]; then
