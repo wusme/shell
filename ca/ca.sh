@@ -3,7 +3,7 @@ PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin
 export PATH
 #Version: 0.6.8
 
-govar="0.2.3"
+govar="0.2.4"
 
 #这里判断系统
 if [ -f /etc/redhat-release ]; then
@@ -73,14 +73,14 @@ if [[ ${yn} == [Yy] ]]; then
 		#yum -y upgrade
 		yum install epel* -y
 		#yum -y remove ntp
-    	pkgList="htop wget vim net-tools git unzip ca-certificates"
+    	pkgList="iftop htop wget vim net-tools git unzip ca-certificates"
     	for Package in ${pkgList}; do
     		yum -y install ${Package}
     	done
 	else
 		apt-get update -y
 		#apt-get upgrade -y
-    	pkgList="htop wget curl vim net-tools git unzip ca-certificates"
+    	pkgList="iftop htop wget curl vim net-tools git unzip ca-certificates"
     	for Package in ${pkgList}; do
       		apt-get -y install $Package
     	done
