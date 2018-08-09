@@ -36,13 +36,13 @@ id_install(){
     do
     echo -e "${CBLUE}当前系统为: ${OS} ${CentOS_RHEL_version}${CEND}"
     echo "请输入新节点ID: [0,3-65535]:"
-    read -p "(默认ID: 0 自动模式):" webid
-    [ -z "${webid}" ] && webid="0"
+    read -p "(默认ID: 3):" webid
+    [ -z "${webid}" ] && webid="3"
     expr ${webid} + 0 &>/dev/null
     if [ ${webid} -ge 0 ] && [ ${webid} -le 65535 ] && [ ${webid} -ne 2 ] && [ ${webid} -ne 3 ]; then
         echo
         echo "---------------------------"
-        if [ $? -eq 0 ]; then
+        if [ ${webid} -eq 0 ]; then
         echo -e "当前输入节点ID = ${Info_font_prefix}[${webid}][自动模式]${Font_suffix}"
         else
         echo -e "当前输入节点ID = ${Info_font_prefix}[${webid}]${Font_suffix}"
@@ -289,7 +289,7 @@ fi
   echo ""
   echo "后端安装成功!"
   echo ""
-  if [ $? -eq 0 ]; then
+  if [ ${webid} -eq 0 ]; then
   echo -e "服务器ID: ${Info_font_prefix}[自动模式]${Font_suffix}"
   else
   echo -e "服务器ID: ${Info_font_prefix}[${webid}]${Font_suffix}"
