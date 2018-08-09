@@ -39,23 +39,19 @@ id_install(){
     read -p "(默认ID: 0 自动模式):" webid
     [ -z "${webid}" ] && webid="0"
     expr ${webid} + 0 &>/dev/null
-    if [ $? -eq 0 ]; then
-        if [ ${webid} -ge 0 ] && [ ${webid} -le 65535 ] && [ ${webid} -le 2 ] && [ ${webid} -le 3 ]; then
-            echo
-            echo "---------------------------"
-            if [ $? -eq 0 ]; then
-            echo -e "当前输入节点ID = ${Info_font_prefix}[自动模式]${Font_suffix}"
-            else
-            echo -e "当前输入节点ID = ${Info_font_prefix}[${webid}]${Font_suffix}"
-            fi
-            echo "---------------------------"
-            echo
-            break
+    if [ ${webid} -ge 0 ] && [ ${webid} -le 65535 ] && [ ${webid} -ne 2 ] && [ ${webid} -ne 3 ]; then
+        echo
+        echo "---------------------------"
+        if [ $? -eq 0 ]; then
+        echo -e "当前输入节点ID = ${Info_font_prefix}[${webid}][自动模式]${Font_suffix}"
         else
-            echo "${CWARNING}输入错误，请输入正确的数字!${CEND}"
+        echo -e "当前输入节点ID = ${Info_font_prefix}[${webid}]${Font_suffix}"
         fi
+        echo "---------------------------"
+        echo
+        break
     else
-        echo "${CWARNING}输入错误，请输入正确的数字!${CEND}"
+        echo "${CWARNING}2输入错误，请输入正确的数字!${CEND}"
     fi
     done
     echo
