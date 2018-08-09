@@ -290,7 +290,7 @@ fi
   echo "后端安装成功!"
   echo ""
   if [ $? -eq 0 ]; then
-  eecho -e "服务器ID: ${Info_font_prefix}[自动模式]${Font_suffix}"
+  echo -e "服务器ID: ${Info_font_prefix}[自动模式]${Font_suffix}"
   else
   echo -e "服务器ID: ${Info_font_prefix}[${webid}]${Font_suffix}"
   fi
