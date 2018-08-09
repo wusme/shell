@@ -39,7 +39,7 @@ id_install(){
     read -p "(默认ID: 3):" webid
     [ -z "${webid}" ] && webid="3"
     expr ${webid} + 0 &>/dev/null
-    if [ ${webid} -ge 0 ] && [ ${webid} -le 65535 ] && [ ${webid} -ne 2 ] && [ ${webid} -ne 3 ]; then
+    if [ ${webid} -ge 3 ] && [ ${webid} -le 65535 ] && [ ${webid} -ne 2 ] && [ ${webid} -ne 3 ]; then
         echo
         echo "---------------------------"
         if [ ${webid} -eq 0 ]; then
